@@ -11,6 +11,12 @@ namespace RadiusClustering
 
 variable {X α : Type*}
 
+/-- Dissimilarity (Def. 1.2): zero on the diagonal, non-negative, symmetric. -/
+structure IsDissimilarity [LE α] [Zero α] (d : X → X → α) : Prop where
+  self : ∀ x, d x x = 0
+  nonneg : ∀ x y, 0 ≤ d x y
+  symm : ∀ x y, d x y = d y x
+
 /-- Threshold graph `G_τ`: distinct `x`, `y` are adjacent iff `d x y ≤ τ` or `d y x ≤ τ`. -/
 def thresholdGraph [LE α] (d : X → X → α) (τ : α) : SimpleGraph X :=
   SimpleGraph.fromRel fun x y => d x y ≤ τ

@@ -11,7 +11,7 @@ variable {X α : Type*} [Fintype X] [LinearOrder α] [Zero α]
 /-- **T3b.** For `k ≤ |X|`, a valid clustering with exactly `k` non-empty clusters (surjective `f`)
 exists iff a valid clustering into at most `k` clusters exists. -/
 theorem exists_surjective_validClustering_iff
-    (d : X → X → α) (τ : α) (hdiag : ∀ x, d x x = 0) (hτ : 0 ≤ τ)
+    (d : X → X → α) (τ : α) (hd : IsDissimilarity d) (hτ : 0 ≤ τ)
     {k : ℕ} (hk : k ≤ Fintype.card X) :
     (∃ f : X → Fin k, Function.Surjective f ∧ IsValidClustering d τ f) ↔
       ∃ f : X → Fin k, IsValidClustering d τ f := by
@@ -26,7 +26,7 @@ theorem not_surjective_of_card_lt {k : ℕ} (hk : Fintype.card X < k) (f : X →
 dominating set of size `≤ k`. -/
 theorem exists_surjective_validClustering_iff_exists_dominating
     (d : X → X → α) (τ : α)
-    (hdiag : ∀ x, d x x = 0) (hsymm : ∀ x y, d x y = d y x) (hτ : 0 ≤ τ)
+    (hd : IsDissimilarity d) (hτ : 0 ≤ τ)
     {k : ℕ} (hk : k ≤ Fintype.card X) :
     (∃ f : X → Fin k, Function.Surjective f ∧ IsValidClustering d τ f) ↔
       ∃ S : Finset X, S.card ≤ k ∧ IsDominating (thresholdGraph d τ) S := by

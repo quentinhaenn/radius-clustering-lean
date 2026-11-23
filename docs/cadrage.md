@@ -122,13 +122,14 @@ pequalnp's formalism and pin.
 
 | Plan | Lean name | File |
 |---|---|---|
-| threshold graph | `thresholdGraph` | `RadiusClustering/Basic.lean` |
+| dissimilarity (Def. 1.2) | `IsDissimilarity` | `RadiusClustering/Basic.lean` |
+| threshold graph | `thresholdGraph` | idem |
 | domination (Def. 1.20) | `IsDominating` | idem |
 | valid clustering, at most k | `IsValidClustering` | idem |
 | `d_G` | `graphDissim` (values in ℕ) | idem |
 | T3a | `exists_validClustering_iff_exists_dominating` | `Pivot.lean` |
 | T2 (i) | `thresholdGraph_graphDissim` | `FromGraph.lean` |
-| T2 (ii) | `graphDissim_eq_zero_iff`, `graphDissim_comm`, `graphDissim_triangle` | idem |
+| T2 (ii) | `isDissimilarity_graphDissim`, `graphDissim_eq_zero_iff`, `graphDissim_comm`, `graphDissim_triangle` | idem |
 | T2 (iii) | `exists_dominating_iff_exists_validClustering_graphDissim` | idem |
 | T3b | `exists_surjective_validClustering_iff` (+ edge case `not_surjective_of_card_lt`) | `Exact.lean` |
 | T3b + T3a | `exists_surjective_validClustering_iff_exists_dominating` | idem |
@@ -136,9 +137,10 @@ pequalnp's formalism and pin.
 Modelling choices made at J1:
 
 - Order type: `[LinearOrder α] [Zero α]`, covering ℝ and ℕ at once; no algebraic structure needed.
-- Each theorem takes only the hypotheses its proof needs (a statement with fewer hypotheses implies
-  the paper's): T3a uses diagonal, symmetry and `0 ≤ τ`; T3b uses diagonal and `0 ≤ τ`.
-  Non-negativity of `d` (Def. 1.2 (ii)) is never needed and is omitted.
+- Reviewed statements assume the full Def. 1.2, bundled as `IsDissimilarity d` (zero diagonal,
+  non-negativity, symmetry), plus `0 ≤ τ`, even where the proof uses less (T3b needs neither
+  symmetry nor non-negativity). Versions with fewer hypotheses may exist as internal lemmas; they
+  are not part of the reviewed surface. (Decided at review, replacing "minimal hypotheses".)
 - `graphDissim` is ℕ-valued (the pequalnp target); a real-valued copy is a cast.
 - Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
 

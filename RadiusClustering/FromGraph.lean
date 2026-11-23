@@ -12,8 +12,11 @@ variable {V : Type*} [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableR
 theorem thresholdGraph_graphDissim : thresholdGraph (graphDissim G) 1 = G := by
   sorry
 
-/-- **T2 (ii).** `graphDissim G` is a metric: zero exactly on the diagonal, symmetric,
-triangle inequality. -/
+/-- **T2 (ii).** `graphDissim G` is a dissimilarity (Def. 1.2), and a metric: zero exactly on the
+diagonal, symmetric, triangle inequality. -/
+theorem isDissimilarity_graphDissim : IsDissimilarity (graphDissim G) := by
+  sorry
+
 theorem graphDissim_eq_zero_iff (u v : V) : graphDissim G u v = 0 ↔ u = v := by
   sorry
 
