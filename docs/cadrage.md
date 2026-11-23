@@ -1,6 +1,7 @@
 # Plan: Lean 4 formalisation of radius-constrained clustering ⇔ MDS
 
-Date: 2026-11-23. Status: plan only, nothing is formalised yet. Statements about other repositories
+Date: 2026-11-23. Status: J0 done; J1 definitions written, statements of T3a, T2 and T3b written
+with `sorry` and awaiting review (§7). No proof yet. Statements about other repositories
 come from automated reading of their files through the GitHub API and must be re-checked before
 being cited in any public document.
 
@@ -117,7 +118,35 @@ What this repository aims to add: the partition version, the clustering ≤ MDS 
 thesis's exact semantics, the exact / at-most-k refinement, the corrected Th. 3.4, and the port to
 pequalnp's formalism and pin.
 
-## 7. First session
+## 7. Statements as written (J1, pending review)
+
+| Plan | Lean name | File |
+|---|---|---|
+| threshold graph | `thresholdGraph` | `RadiusClustering/Basic.lean` |
+| domination (Def. 1.20) | `IsDominating` | idem |
+| valid clustering, at most k | `IsValidClustering` | idem |
+| `d_G` | `graphDissim` (values in ℕ) | idem |
+| T3a | `exists_validClustering_iff_exists_dominating` | `Pivot.lean` |
+| T2 (i) | `thresholdGraph_graphDissim` | `FromGraph.lean` |
+| T2 (ii) | `graphDissim_eq_zero_iff`, `graphDissim_comm`, `graphDissim_triangle` | idem |
+| T2 (iii) | `exists_dominating_iff_exists_validClustering_graphDissim` | idem |
+| T3b | `exists_surjective_validClustering_iff` (+ edge case `not_surjective_of_card_lt`) | `Exact.lean` |
+| T3b + T3a | `exists_surjective_validClustering_iff_exists_dominating` | idem |
+
+Modelling choices made at J1:
+
+- Order type: `[LinearOrder α] [Zero α]`, covering ℝ and ℕ at once; no algebraic structure needed.
+- Each theorem takes only the hypotheses its proof needs (a statement with fewer hypotheses implies
+  the paper's): T3a uses diagonal, symmetry and `0 ≤ τ`; T3b uses diagonal and `0 ≤ τ`.
+  Non-negativity of `d` (Def. 1.2 (ii)) is never needed and is omitted.
+- `graphDissim` is ℕ-valued (the pequalnp target); a real-valued copy is a cast.
+- Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
+
+Tooling (J0): `scripts/check_axioms.sh` fails on any axiom other than `propext`,
+`Classical.choice`, `Quot.sound`; `sorryAx` is only a warning until `STRICT=1`, which CI will set
+once the J1–J3 proofs are done. The local copy of the pequalnp checker is deferred to J5.
+
+## 8. First session
 
 Install `elan`, run `lake exe cache get` then an empty `lake build`. Then write, with provisional
 `sorry`, the exact statements of T3a, T2 and T3b, and **have them reviewed** before any proof: this

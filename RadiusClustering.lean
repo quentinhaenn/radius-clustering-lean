@@ -1,5 +1,10 @@
+import RadiusClustering.Basic
+import RadiusClustering.Pivot
+import RadiusClustering.FromGraph
+import RadiusClustering.Exact
+
 /-!
 # radius-clustering-lean
 
-Root module. Nothing is formalised yet: see `docs/cadrage.md` for the plan.
+Root module. Plan and status: `docs/cadrage.md`.
 -/
