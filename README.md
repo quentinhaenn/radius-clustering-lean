@@ -4,7 +4,7 @@ Lean 4 / Mathlib formalisation of the equivalence between **radius-constrained c
 **minimum dominating set** (MDS), in both directions.
 
 **Status: planning only. Nothing is formalised or checked yet.** The first commit contains the
-project scaffold and the plan (`docs/cadrage.md`, in French). `lake build` has not been run.
+project scaffold and the plan (`docs/cadrage.md`). `lake build` has not been run.
 
 ## Source
 
