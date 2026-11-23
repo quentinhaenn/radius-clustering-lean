@@ -26,7 +26,8 @@ def IsDominating {V : Type*} (G : SimpleGraph V) (S : Finset V) : Prop :=
   ∀ v, v ∈ S ∨ ∃ s ∈ S, G.Adj s v
 
 /-- Every non-empty cluster of `f` has a centre inside it at dissimilarity `≤ τ` from all of its
-points (Def. 1.10, 1.11). Labels in `Fin k`, empty clusters allowed: "at most `k` clusters". -/
+points (Def. 1.10, 1.11). Clusters are the non-empty fibres of `f`; unused labels are allowed,
+so this reads "a partition into at most `k` clusters". -/
 def IsValidClustering [LE α] {k : ℕ} (d : X → X → α) (τ : α) (f : X → Fin k) : Prop :=
   ∀ y, ∃ c, f c = f y ∧ ∀ z, f z = f y → d c z ≤ τ
 

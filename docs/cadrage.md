@@ -26,7 +26,7 @@ symmetry, `d x x = 0`.
 
 - Threshold graph `G_τ = fromRel (fun x y => d x y ≤ τ)` (x ~ y iff x ≠ y and d x y ≤ τ).
 - `S` dominates `G` if `∀ v, v ∈ S ∨ ∃ s ∈ S, G.Adj s v`.
-- Clustering into at most `k` clusters: `f : X → Fin k` (empty clusters allowed).
+- Clustering into at most `k` clusters: `f : X → Fin k`; clusters are the non-empty fibres, unused labels allowed.
 - Radius constraint (Def. 1.10, centre inside its cluster):
   `∀ y, ∃ c, f c = f y ∧ ∀ z, f z = f y → d c z ≤ τ`.
 - "Exactly k": `f` is surjective.
