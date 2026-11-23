@@ -1,0 +1,6 @@
+.lake/
+build/
+*.olean
+.DS_Store
+# Private working notes (contact strategy, risks), never published
+notes-privees/
