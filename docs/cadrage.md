@@ -128,6 +128,7 @@ pequalnp's formalism and pin.
 | valid clustering, at most k | `IsValidClustering` | idem |
 | `d_G` | `graphDissim` (values in ℕ) | idem |
 | T3a | `exists_validClustering_iff_exists_dominating` | `Pivot.lean` |
+| T1 | `minClusters_iff_minDominating` | `Pivot.lean` |
 | T2 (i) | `thresholdGraph_graphDissim` | `FromGraph.lean` |
 | T2 (ii) | `isDissimilarity_graphDissim`, `graphDissim_eq_zero_iff`, `graphDissim_comm`, `graphDissim_triangle` | idem |
 | T2 (iii) | `exists_dominating_iff_exists_validClustering_graphDissim` | idem |
