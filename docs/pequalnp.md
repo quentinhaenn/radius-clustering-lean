@@ -44,7 +44,12 @@ clusters, each with a centre inside it at dissimilarity `≤ τ` from all its po
 are `< N`, `φ` is satisfiable iff its gadget graph has a dominating set of size `≤ N`. Gadget:
 a triangle `{(i, true), (i, false), (i, none)}` per variable, a vertex per clause adjacent to its
 literals. It holds for any CNF, so the chain can start from SAT (`L031`) rather than 3-SAT.
-With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness of SAT → CLUST.
+With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness of SAT → CLUST:
+`satisfiable_iff_mem_clustLang` (`SatToClust.lean`, not yet reviewed): `φ` is satisfiable iff
+`encInst N 1 (toTri (gadgetDissim φ N)) ∈ clustLang`.
+
+The candidate statement type-checks against pequalnp's own build (clone `58845ea`, full
+`lake build PEqualNP` after a check that no file runs code at compile time).
 
 ## Remaining for a proof in pequalnp's framework
 
