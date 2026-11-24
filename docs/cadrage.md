@@ -1,7 +1,7 @@
 # Plan: Lean 4 formalisation of radius-constrained clustering ⇔ MDS
 
-Date: 2026-11-23. Status: J0 done; J1 definitions written, statements of T3a, T2 and T3b written
-with `sorry` and awaiting review (§7). No proof yet. Statements about other repositories
+Date: 2026-11-24. Status: J0 done; J1 done: definitions and statements (T3a, T1, T1c, T2, T2c,
+T3b) written with `sorry` and validated line by line by the author (§7). No proof yet. Statements about other repositories
 come from automated reading of their files through the GitHub API and must be re-checked before
 being cited in any public document.
 
@@ -85,7 +85,7 @@ theorem (limited to `propext`, `Classical.choice`, `Quot.sound`).
 - **J0.** Install `elan`, `lake exe cache get`, empty `lake build`; GitHub Actions CI; local copy of
   the pequalnp checker to test gap-format files [U].
 - **J1.** Definitions and basic API: threshold graph, `IsDominating`, valid clustering.
-- **J2.** T3a, then T1, T2 and T2'.
+- **J2.** T3a, then T1, T1c, T2 and T2c (T2c is the T2' of §2).
 - **J3.** T3b and edge cases.
 - **J4.** T4, Fig. 3.4 by computation, and the order-invariance lemma (ℝ → ℕ).
 - **J5.** "Gap" versions: one theorem, everything inline, Mathlib only, accepted by the local
@@ -118,7 +118,7 @@ What this repository aims to add: the partition version, the clustering ≤ MDS 
 thesis's exact semantics, the exact / at-most-k refinement, the corrected Th. 3.4, and the port to
 pequalnp's formalism and pin.
 
-## 7. Statements as written (J1, pending review)
+## 7. Statements as written (J1, validated by the author on 2026-11-24)
 
 | Plan | Lean name | File |
 |---|---|---|
