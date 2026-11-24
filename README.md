@@ -3,9 +3,28 @@
 Lean 4 / Mathlib formalisation of the equivalence between **radius-constrained clustering** and
 **minimum dominating set** (MDS), in both directions.
 
-**Status: J1–J4 proved.** `lake build` succeeds with no `sorry`; the key theorems depend only on
+**Status: J1–J4 proved; CLUST NP-complete in pequalnp's framework (below).** `lake build` succeeds with no `sorry`; the key theorems depend only on
 `propext`, `Classical.choice` and `Quot.sound` (`STRICT=1 scripts/check_axioms.sh`, also run in
 CI). Plan and the list of statements: `docs/cadrage.md` §7.
+
+## CLUST is NP-complete, in pequalnp's framework
+
+The decision problem CLUST (given an integer dissimilarity on `n` points as its upper triangle,
+`k` and `τ`: is there a partition into at most `k` clusters, each with a centre inside it at
+dissimilarity `≤ τ` from all its points?) is proved NP-complete on the definitions of
+[pequalnp-proofs](https://github.com/brilliant-hq/pequalnp-proofs) (`P`, `NP`, polynomial-time
+reductions on bit strings, built on Mathlib's Turing machines):
+
+- CLUST ∈ NP, by a polynomial-time verifier;
+- SAT reduces to CLUST in polynomial time, through a dominating-set gadget indexed by the items of
+  the formula's encoding, then the graph dissimilarity (`1` on an edge, `2` otherwise, `τ = 1`);
+- with their SAT NP-completeness (Cook–Levin, `L031`), CLUST is NP-complete, so a polynomial-time
+  algorithm for CLUST is equivalent to `P = NP` in their framework (`L018`).
+
+`pequalnp-bridge/L_clust_npc.lean` is the proof as one file in their contribution format; their
+own checker accepts it (`ACCEPTED (check): PEqualNP.Outside.L_clust_npc`, axioms `propext`,
+`Quot.sound`, `Classical.choice`; output in `pequalnp-bridge/checker-output.txt`). The
+statement, and how to rerun the check: `docs/pequalnp.md`.
 
 ## Source
 

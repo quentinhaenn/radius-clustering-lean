@@ -114,6 +114,16 @@ in their format (helpers inside `namespace PEqualNP.Outside.L_clust_npc`, the th
 imports Mathlib and `PEqualNP.Library` only). Copied to `lean/PEqualNP/Outside/` of the clone
 (`58845ea`, committed `lakefile.toml`), their checker `node tools/check-lean.mjs <file>
 <statement> check` gives `ACCEPTED (check): PEqualNP.Outside.L_clust_npc; axioms [propext,
-Quot.sound, Classical.choice]`, kernel re-check of 5606 constants (2026-11-24, full output with
+Quot.sound, Classical.choice]`, kernel re-check of 5597 constants (2026-11-24, full output with
 MANIFEST in `pequalnp-bridge/checker-output.txt`). Not checked: their rule that a file imports
 only the modules listed for a posted gap, since no gap exists for this statement.
+
+To rerun: in a clone of `brilliant-hq/pequalnp-proofs` at `58845ea` with the prebuilt Mathlib
+(`lake exe cache get` in `lean/`), copy `pequalnp-bridge/L_clust_npc.lean` to
+`lean/PEqualNP/Outside/L_clust_npc.lean`, put the statement above (the term after the colon) in
+`statement.txt`, then `node tools/check-lean.mjs lean/PEqualNP/Outside/L_clust_npc.lean
+statement.txt check`.
+
+The file follows their plain-file rules (no comment, no notation, no option, named sections),
+except one: it declares three small data types with a `Fintype` instance (states of
+finite-state transducers), so their merge program would leave it to a person to read.
