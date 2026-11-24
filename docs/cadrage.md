@@ -107,6 +107,24 @@ name; no `sorry`, `native_decide`, `#` command, `macro`, `notation`, `elab` or s
 custom type or instance triggers human review. Statements involving polynomial time need graph
 encodings that do not exist in their repository.
 
+Re-read on 2026-11-24 (read only, nothing run) **[V]**:
+
+- Pin unchanged: Lean v4.36.0, Mathlib `fc4f59e…`.
+- Contributions prove **gaps posted by their desk**; a pull request adds one file proving exactly
+  a posted statement ("a stronger, weaker or reworded statement is refused"). Outsiders do not
+  propose statements: a statement of ours can only enter if the maintainers post it.
+- `PEqualNP/Defs/Base.lean` defines `P`, `NP` (verifiers), `PolyTimeReducible` (Karp) and
+  `NPComplete` over `Language Bool`, with Mathlib's `Turing.TM2ComputableInPolyTime`.
+- `Library/L031` (SAT NP-complete, Cook–Levin), `L032` (3-SAT), `L020` (NP-completeness transfers
+  along a reduction from an NP-complete language to a language in NP) are checked.
+- No dominating-set or clustering language found (code search, not exhaustive); no graph
+  encoding as `List Bool` found.
+
+Consequence: a full "radius clustering is NP-complete" in their formalism needs a binary encoding
+of instances, an NP-hard graph problem reached from 3-SAT, our reductions written as polynomial-time
+TM2 machines, and a polynomial-time verifier. The gap-format statements of J5 (correctness only)
+could only be used if the maintainers post them.
+
 ## 6. Relation to existing work
 
 - [cslib-frontier](https://github.com/cslib-community/cslib-frontier) [V for the existence of the
