@@ -28,6 +28,14 @@ theorem minClusters_iff_minDominating
         ∀ S : Finset X, IsDominating (thresholdGraph d τ) S → k ≤ S.card) := by
   sorry
 
+/-- **T2c** (existence). Every valid partition has a set of centres. -/
+theorem exists_isCentreSet
+    {X α : Type*} [Fintype X] [LinearOrder α] [Zero α]
+    (d : X → X → α) (τ : α) (hd : IsDissimilarity d) (hτ : 0 ≤ τ)
+    {k : ℕ} (f : X → Fin k) (hf : IsValidClustering d τ f) :
+    ∃ C : Finset X, IsCentreSet d τ f C := by
+  sorry
+
 /-- **T1c** (existence). A dominating set `S` always has a partition derived from it, with `|S|`
 labels. -/
 theorem exists_isDerivedFrom

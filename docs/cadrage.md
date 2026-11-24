@@ -133,6 +133,7 @@ pequalnp's formalism and pin.
 | T2 (i) | `thresholdGraph_graphDissim` | `FromGraph.lean` |
 | T2 (ii) | `isDissimilarity_graphDissim` | idem |
 | T2 (iii) | `exists_dominating_iff_exists_validClustering_graphDissim` | idem |
+| T2c (constructive) | `IsCentreSet`, `exists_isCentreSet`, `isCentreSet_minClustering_graphDissim` | `Basic.lean`, `Pivot.lean`, `FromGraph.lean` |
 | T3b | `exists_surjective_validClustering_iff` (+ edge case `not_surjective_of_card_lt`) | `Exact.lean` |
 | T3b + T3a | `exists_surjective_validClustering_iff_exists_dominating` | idem |
 

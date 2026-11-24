@@ -6,11 +6,13 @@ open RadiusClustering
 
 #print axioms exists_validClustering_iff_exists_dominating
 #print axioms minClusters_iff_minDominating
+#print axioms exists_isCentreSet
 #print axioms exists_isDerivedFrom
 #print axioms isDerivedFrom_minDominating
 #print axioms thresholdGraph_graphDissim
 #print axioms isDissimilarity_graphDissim
 #print axioms exists_dominating_iff_exists_validClustering_graphDissim
+#print axioms isCentreSet_minClustering_graphDissim
 #print axioms exists_surjective_validClustering_iff
 #print axioms not_surjective_of_card_lt
 #print axioms exists_surjective_validClustering_iff_exists_dominating
