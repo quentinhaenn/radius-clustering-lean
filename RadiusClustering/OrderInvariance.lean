@@ -8,15 +8,19 @@ namespace RadiusClustering
 
 variable {X α β : Type*} [LinearOrder α] [LinearOrder β]
 
+-- `hd`, `hτ` kept for uniformity with the reviewed statements (`docs/cadrage.md` §7).
+set_option linter.unusedVariables false in
 /-- Applying a strictly increasing `φ` to `d` and `τ` keeps the same valid clusterings. -/
-theorem isValidClustering_comp_strictMono (φ : α → β) (hφ : StrictMono φ)
-    (d : X → X → α) (τ : α) {k : ℕ} (f : X → Fin k) :
+theorem isValidClustering_comp_strictMono [Zero α] (φ : α → β) (hφ : StrictMono φ)
+    (d : X → X → α) (hd : IsDissimilarity d) (τ : α) (hτ : 0 ≤ τ) {k : ℕ} (f : X → Fin k) :
     IsValidClustering (fun x y => φ (d x y)) (φ τ) f ↔ IsValidClustering d τ f := by
   sorry
 
+-- `hd`, `hτ` kept for uniformity with the reviewed statements (`docs/cadrage.md` §7).
+set_option linter.unusedVariables false in
 /-- Applying a strictly increasing `φ` to `d` and `τ` keeps the same threshold graph. -/
-theorem thresholdGraph_comp_strictMono (φ : α → β) (hφ : StrictMono φ)
-    (d : X → X → α) (τ : α) :
+theorem thresholdGraph_comp_strictMono [Zero α] (φ : α → β) (hφ : StrictMono φ)
+    (d : X → X → α) (hd : IsDissimilarity d) (τ : α) (hτ : 0 ≤ τ) :
     thresholdGraph (fun x y => φ (d x y)) (φ τ) = thresholdGraph d τ := by
   sorry
 
