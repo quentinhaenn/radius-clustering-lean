@@ -10,6 +10,7 @@ import RadiusClustering.PEqualNP.Injective
 import RadiusClustering.PEqualNP.Fig34Test
 import RadiusClustering.PEqualNP.SatGadget
 import RadiusClustering.PEqualNP.SatToClust
+import RadiusClustering.PEqualNP.ItemGadget
 
 /-!
 # radius-clustering-lean

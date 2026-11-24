@@ -38,14 +38,17 @@ clusters, each with a centre inside it at dissimilarity `≤ τ` from all its po
 - `encInst_injective`: an encoding determines `k`, `τ` and the rows.
 - `fig34_mem_clustLang`: Fig. 3.4 is in for `k = 2, τ = 1`, out for `τ = 0`.
 
-## SAT → dominating set (`SatGadget.lean`, statement not yet reviewed by the author)
+## SAT → dominating set (`SatGadget.lean`, intermediate lemma)
+
+Intermediate lemmas, not reviewed by the author: the statement to trust is the final
+`NPComplete` one, built only from `clustLang` (reviewed) and pequalnp's own definitions.
 
 `satisfiable_iff_exists_dominating`: for a CNF formula `φ` in pequalnp's format whose variables
 are `< N`, `φ` is satisfiable iff its gadget graph has a dominating set of size `≤ N`. Gadget:
 a triangle `{(i, true), (i, false), (i, none)}` per variable, a vertex per clause adjacent to its
 literals. It holds for any CNF, so the chain can start from SAT (`L031`) rather than 3-SAT.
 With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness of SAT → CLUST:
-`satisfiable_iff_mem_clustLang` (`SatToClust.lean`, not yet reviewed): `φ` is satisfiable iff
+`satisfiable_iff_mem_clustLang` (`SatToClust.lean`): `φ` is satisfiable iff
 `encInst N 1 (toTri (gadgetDissim φ N)) ∈ clustLang`.
 
 The candidate statement type-checks against pequalnp's own build (clone `58845ea`, full
@@ -66,11 +69,15 @@ mathematics, and proves polynomial time by composing proven primitives (`cpt_com
 is written by hand. Their Cook–Levin tableau is built this way, so the nested loop that writes
 the `n(n-1)/2` entries of `d_G` is within reach.
 
-- **SAT → CLUST.** One obstacle: variables are arbitrary natural numbers, so a short formula may
-  name variable `2^100`, and one triangle per variable below `N` is exponential. The reduction
-  must first rename the variables compactly (e.g. by first occurrence), with a lemma that an
-  injective renaming preserves satisfiability. Then: gadget, `graphDissim`, upper triangle,
-  `encInst`, each as a string function.
+- **SAT → CLUST.** Variables are arbitrary natural numbers, so one triangle per variable below
+  `N` (`SatGadget.lean`) can be exponential in the length of the encoding. `ItemGadget.lean`
+  indexes the gadget by the items of the encoding instead (a literal or an end of clause): block
+  `{3p, 3p+1, 3p+2}` for item `p`; a literal block is a triangle, an end block is an edge
+  `3p–3p+1` plus the clause vertex `3p+2`; only the first occurrence of a variable (its
+  representative) is joined to the clauses, so every block costs one vertex and `k` is the number
+  of items. `satisfiable_iff_itemInst_mem` (proved, no hypothesis on `φ`): `φ` is satisfiable
+  iff `itemInst φ ∈ clustLang`. What remains is a string function equal to `itemInst` on
+  encodings, and its polynomial time.
 - **CLUST ∈ NP.** A string verifier in the style of their `SatVerifier` (witness: one label per
   point), or a reduction CLUST → SAT, then closure of NP under reductions (used for 3-SAT).
 - cslib-frontier has `DominatingSet_npComplete` (no `sorry` in its directory; Lean

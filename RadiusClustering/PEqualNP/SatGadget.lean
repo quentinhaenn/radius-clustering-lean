@@ -6,7 +6,7 @@ import RadiusClustering.Basic
 CNF formulas as in pequalnp (`PEqualNP/Defs/Search.lean`): a literal `(i, b)` is true under `σ`
 when `σ i = b`. Variables `i < N` get a triangle `{(i, true), (i, false), (i, none)}`; clause `j`
 gets a vertex adjacent to its literals. `φ` is satisfiable iff the graph has a dominating set
-of size `≤ N` (statement not yet reviewed by the author, `docs/pequalnp.md`).
+of size `≤ N` (intermediate lemma, `docs/pequalnp.md`).
 -/
 
 namespace RadiusClustering.PEqualNP

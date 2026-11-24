@@ -3,7 +3,7 @@ import RadiusClustering.PEqualNP.Injective
 import RadiusClustering.FromGraph
 
 /-!
-# SAT → CLUST, correctness (statement not yet reviewed by the author)
+# SAT → CLUST, correctness (intermediate lemma)
 
 The gadget graph of `φ`, turned into `graphDissim` with `τ = 1` and `k = N`, then into the upper
 triangle on `Fin n` (vertices numbered by `Fintype.equivFin`). Polynomial time is not addressed
