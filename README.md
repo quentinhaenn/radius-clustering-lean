@@ -40,7 +40,7 @@ statement, and how to rerun the check: `docs/pequalnp.md`.
   Conférence sur la Gestion de Données, Orléans), in French.
   [hal-04791528](https://hal.science/hal-04791528).
 - Q. Haenn, B. Chardin, M. Baron, A. Hadjali, *Iterative Graph-Based Radius-Constrained
-  Clustering*, Machine Learning with Graphs Workshop, Porto, 2025.
+  Clustering*, Machine Learning with Graphs (MLG) Workshop at ECML PKDD 2025, Porto.
   [hal-05281748](https://hal.science/hal-05281748).
 - Software: [scikit-learn-contrib/radius_clustering](https://github.com/scikit-learn-contrib/radius_clustering)
   ([hal-05039266](https://hal.science/hal-05039266)).
