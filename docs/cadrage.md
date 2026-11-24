@@ -37,7 +37,7 @@ symmetry, `d x x = 0`.
   (∃ f : X → Fin k valid) ⇔ (∃ S, |S| ≤ k ∧ S dominates G_τ).
 - **T1 (Th. 3.1, ⇒, optimisation version).** The minimum number of clusters (Def. 1.11) equals γ(G_τ).
 - **T2 (Th. 3.1, ⇐).** For every finite graph G, with `d_G(u,u) = 0`, `d_G = 1` on edges and `2`
-  elsewhere: `G_1(d_G) = G`, `d_G` is a metric, and γ(G) is the minimum number of clusters of
+  elsewhere: `G_1(d_G) = G`, `d_G` is a dissimilarity (Def. 1.2), and γ(G) is the minimum number of clusters of
   (V, d_G, 1).
 - **T2' (strict reduction).** The centres of a valid clustering of (V, d_G, 1) form a dominating set
   of size at most the number of non-empty clusters. The instance size is preserved.
@@ -131,7 +131,7 @@ pequalnp's formalism and pin.
 | T1 | `minClusters_iff_minDominating` | `Pivot.lean` |
 | T1c (constructive) | `IsDerivedFrom`, `exists_isDerivedFrom`, `isDerivedFrom_minDominating` | `Basic.lean`, `Pivot.lean` |
 | T2 (i) | `thresholdGraph_graphDissim` | `FromGraph.lean` |
-| T2 (ii) | `isDissimilarity_graphDissim`, `graphDissim_eq_zero_iff`, `graphDissim_comm`, `graphDissim_triangle` | idem |
+| T2 (ii) | `isDissimilarity_graphDissim` | idem |
 | T2 (iii) | `exists_dominating_iff_exists_validClustering_graphDissim` | idem |
 | T3b | `exists_surjective_validClustering_iff` (+ edge case `not_surjective_of_card_lt`) | `Exact.lean` |
 | T3b + T3a | `exists_surjective_validClustering_iff_exists_dominating` | idem |
@@ -143,7 +143,9 @@ Modelling choices made at J1:
   non-negativity, symmetry), plus `0 ≤ τ`, even where the proof uses less (T3b needs neither
   symmetry nor non-negativity). Versions with fewer hypotheses may exist as internal lemmas; they
   are not part of the reviewed surface. (Decided at review, replacing "minimal hypotheses".)
-- `graphDissim` is ℕ-valued (the pequalnp target); a real-valued copy is a cast.
+- `graphDissim` is ℕ-valued (the pequalnp target); a real-valued copy is a cast. Only its
+  dissimilarity property is stated: metric properties (triangle inequality, separation) were dropped
+  at review, the thesis being about dissimilarities without the triangle inequality.
 - Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
 
 Tooling (J0): `scripts/check_axioms.sh` fails on any axiom other than `propext`,

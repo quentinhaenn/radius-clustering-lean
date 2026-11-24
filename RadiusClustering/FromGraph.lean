@@ -12,19 +12,8 @@ variable {V : Type*} [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableR
 theorem thresholdGraph_graphDissim : thresholdGraph (graphDissim G) 1 = G := by
   sorry
 
-/-- **T2 (ii).** `graphDissim G` is a dissimilarity (Def. 1.2), and a metric: zero exactly on the
-diagonal, symmetric, triangle inequality. -/
+/-- **T2 (ii).** `graphDissim G` is a dissimilarity (Def. 1.2). -/
 theorem isDissimilarity_graphDissim : IsDissimilarity (graphDissim G) := by
-  sorry
-
-theorem graphDissim_eq_zero_iff (u v : V) : graphDissim G u v = 0 ↔ u = v := by
-  sorry
-
-theorem graphDissim_comm (u v : V) : graphDissim G u v = graphDissim G v u := by
-  sorry
-
-theorem graphDissim_triangle (u v w : V) :
-    graphDissim G u w ≤ graphDissim G u v + graphDissim G v w := by
   sorry
 
 /-- **T2 (iii).** `G` has a dominating set of size `≤ k` iff its vertices split into at most `k`
