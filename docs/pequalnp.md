@@ -51,3 +51,22 @@ With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness
 Through their `L020` (NP-completeness transfers along a reduction into NP) from `L031` (SAT):
 a reduction SAT → CLUST computable in polynomial time, and CLUST ∈ NP. With their `L018`, a
 polynomial-time algorithm for CLUST would then give `P = NP` inside their framework.
+
+## Feasibility notes for the two remaining pieces (read 2026-11-24, clone `58845ea`)
+
+pequalnp writes a reduction as a plain function on bit strings, proves its correctness as pure
+mathematics, and proves polynomial time by composing proven primitives (`cpt_comp`, `cpt_pair`,
+`cpt_sel`, `cpt_iterLen`, `cpt_lookup`, `cpt_loop`, `cpt_flatMapRange`, finite-state transducers;
+`Library/Machines/`, `Library/Universal/PrimsCPT.lean`, `Library/SearchHelpers/`). No machine
+is written by hand. Their Cook–Levin tableau is built this way, so the nested loop that writes
+the `n(n-1)/2` entries of `d_G` is within reach.
+
+- **SAT → CLUST.** One obstacle: variables are arbitrary natural numbers, so a short formula may
+  name variable `2^100`, and one triangle per variable below `N` is exponential. The reduction
+  must first rename the variables compactly (e.g. by first occurrence), with a lemma that an
+  injective renaming preserves satisfiability. Then: gadget, `graphDissim`, upper triangle,
+  `encInst`, each as a string function.
+- **CLUST ∈ NP.** A string verifier in the style of their `SatVerifier` (witness: one label per
+  point), or a reduction CLUST → SAT, then closure of NP under reductions (used for 3-SAT).
+- cslib-frontier has `DominatingSet_npComplete` (no `sorry` in its directory; Lean
+  `v4.36.0-rc2`, its own machine model): a blueprint only, nothing transfers as is.
