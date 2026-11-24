@@ -8,6 +8,7 @@ import RadiusClustering.OrderInvariance
 import RadiusClustering.PEqualNP.Clust
 import RadiusClustering.PEqualNP.Injective
 import RadiusClustering.PEqualNP.Fig34Test
+import RadiusClustering.PEqualNP.SatGadget
 
 /-!
 # radius-clustering-lean

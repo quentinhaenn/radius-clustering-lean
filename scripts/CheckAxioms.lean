@@ -30,3 +30,4 @@ open RadiusClustering
 #print axioms RadiusClustering.PEqualNP.mem_clustLang_iff
 #print axioms RadiusClustering.PEqualNP.encInst_injective
 #print axioms RadiusClustering.PEqualNP.fig34_mem_clustLang
+#print axioms RadiusClustering.PEqualNP.satisfiable_iff_exists_dominating

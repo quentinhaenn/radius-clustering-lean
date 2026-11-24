@@ -38,6 +38,14 @@ clusters, each with a centre inside it at dissimilarity `≤ τ` from all its po
 - `encInst_injective`: an encoding determines `k`, `τ` and the rows.
 - `fig34_mem_clustLang`: Fig. 3.4 is in for `k = 2, τ = 1`, out for `τ = 0`.
 
+## SAT → dominating set (`SatGadget.lean`, statement not yet reviewed by the author)
+
+`satisfiable_iff_exists_dominating`: for a CNF formula `φ` in pequalnp's format whose variables
+are `< N`, `φ` is satisfiable iff its gadget graph has a dominating set of size `≤ N`. Gadget:
+a triangle `{(i, true), (i, false), (i, none)}` per variable, a vertex per clause adjacent to its
+literals. It holds for any CNF, so the chain can start from SAT (`L031`) rather than 3-SAT.
+With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness of SAT → CLUST.
+
 ## Remaining for a proof in pequalnp's framework
 
 Through their `L020` (NP-completeness transfers along a reduction into NP) from `L031` (SAT):
