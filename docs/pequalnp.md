@@ -82,3 +82,20 @@ the `n(n-1)/2` entries of `d_G` is within reach.
   point), or a reduction CLUST → SAT, then closure of NP under reductions (used for 3-SAT).
 - cslib-frontier has `DominatingSet_npComplete` (no `sorry` in its directory; Lean
   `v4.36.0-rc2`, its own machine model): a blueprint only, nothing transfers as is.
+
+## Proofs in pequalnp's framework (`pequalnp-bridge/ClustNP/`)
+
+These files import pequalnp's modules, so they are built inside a clone of
+`brilliant-hq/pequalnp-proofs` (commit `58845ea`), not by this repository's `lake build`: symlink
+`RadiusClustering/` and `pequalnp-bridge/ClustNP/` into the clone's `lean/` directory, add
+`[[lean_lib]] name = "RadiusClustering"` and `[[lean_lib]] name = "ClustNP"` to its
+`lakefile.toml`, then `lake build ClustNP.InNP`.
+
+- `Defs.lean`: a verifier `CV` as string functions (comparison of binary numbers, reading of
+  rows, triangularity, count of centres, covering), in the style of their `SatVerifierDefs`.
+  Witness: one bit per point, `true` for a centre.
+- `Read.lean`, `Wf.lean`: what these functions compute on encodings; `wfI_iff`: the acceptor
+  recognises exactly the strings `encInst k τ M`.
+- `CPT.lean`: `cpt_CV`, the verifier runs in polynomial time (their primitives only).
+- `InNP.lean`: `CV_spec` (via T3a) and **`clustLang_mem_NP : clustLang ∈ PEqualNP.Library.NP`**,
+  axioms `propext`, `Classical.choice`, `Quot.sound` only (`CheckAxioms.lean`).
