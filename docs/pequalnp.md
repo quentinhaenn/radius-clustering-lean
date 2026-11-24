@@ -54,7 +54,7 @@ With T2 (MDS → clustering, `graphDissim`, `τ = 1`) this gives the correctness
 The candidate statement type-checks against pequalnp's own build (clone `58845ea`, full
 `lake build PEqualNP` after a check that no file runs code at compile time).
 
-## Remaining for a proof in pequalnp's framework
+## Remaining for a proof in pequalnp's framework (done since: see the last section)
 
 Through their `L020` (NP-completeness transfers along a reduction into NP) from `L031` (SAT):
 a reduction SAT → CLUST computable in polynomial time, and CLUST ∈ NP. With their `L018`, a
@@ -97,5 +97,16 @@ These files import pequalnp's modules, so they are built inside a clone of
 - `Read.lean`, `Wf.lean`: what these functions compute on encodings; `wfI_iff`: the acceptor
   recognises exactly the strings `encInst k τ M`.
 - `CPT.lean`: `cpt_CV`, the verifier runs in polynomial time (their primitives only).
-- `InNP.lean`: `CV_spec` (via T3a) and **`clustLang_mem_NP : clustLang ∈ PEqualNP.Library.NP`**,
-  axioms `propext`, `Classical.choice`, `Quot.sound` only (`CheckAxioms.lean`).
+- `InNP.lean`: `CV_spec` (via T3a) and **`clustLang_mem_NP : clustLang ∈ PEqualNP.Library.NP`**.
+- `RedDefs.lean`: the reduction `red` as a string function: on `encodeCNF φ` it writes
+  `itemInst φ` (`ItemGadget.lean`), on any other string `[]`.
+- `RedItems.lean`, `RedCorrect.lean`: `red (encodeCNF φ) = itemInst φ` (`red_encodeCNF`).
+- `RedCPT.lean`: `cpt_red`, polynomial time.
+- `NPC.lean`: `sat_reduces_clust`, **`clustLang_npComplete`** (their `L020` from `L031`),
+  `clustLang_mem_P_iff : clustLang ∈ P ↔ P = NP` (their `L018`), and
+  **`PEqualNP.Outside.L_clust_npc`**, the candidate statement above, proved.
+
+All of them depend on `propext`, `Classical.choice`, `Quot.sound` only (`CheckAxioms.lean`).
+The theorem is proved against pequalnp's definitions; it has not been run through their checker
+(`tools/check-lean.mjs`), and their submission format (one file, imports limited to the modules a
+posted gap lists) would require inlining these files.
