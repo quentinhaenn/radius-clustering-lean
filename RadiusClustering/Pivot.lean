@@ -28,4 +28,25 @@ theorem minClusters_iff_minDominating
         ∀ S : Finset X, IsDominating (thresholdGraph d τ) S → k ≤ S.card) := by
   sorry
 
+/-- **T1c** (existence). A dominating set `S` always has a partition derived from it, with `|S|`
+labels. -/
+theorem exists_isDerivedFrom
+    {X α : Type*} [Fintype X] [LinearOrder α] [Zero α]
+    (d : X → X → α) (τ : α) (S : Finset X) (hS : IsDominating (thresholdGraph d τ) S) :
+    ∃ f : X → Fin S.card, IsDerivedFrom d S f := by
+  sorry
+
+/-- **T1c** (Th. 3.1, constructive form). The partition derived from a minimum dominating set of
+`G_τ` is valid, has exactly `|S|` clusters, and no valid partition has fewer. -/
+theorem isDerivedFrom_minDominating
+    {X α : Type*} [Fintype X] [LinearOrder α] [Zero α]
+    (d : X → X → α) (τ : α)
+    (hd : IsDissimilarity d) (hτ : 0 ≤ τ) (S : Finset X)
+    (hS : IsDominating (thresholdGraph d τ) S)
+    (hmin : ∀ S' : Finset X, IsDominating (thresholdGraph d τ) S' → S.card ≤ S'.card)
+    {k : ℕ} (f : X → Fin k) (hf : IsDerivedFrom d S f) :
+    IsValidClustering d τ f ∧ (Finset.univ.image f).card = S.card ∧
+      ∀ m < S.card, ¬ ∃ g : X → Fin m, IsValidClustering d τ g := by
+  sorry
+
 end RadiusClustering

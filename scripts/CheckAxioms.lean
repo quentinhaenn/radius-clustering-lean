@@ -6,6 +6,8 @@ open RadiusClustering
 
 #print axioms exists_validClustering_iff_exists_dominating
 #print axioms minClusters_iff_minDominating
+#print axioms exists_isDerivedFrom
+#print axioms isDerivedFrom_minDominating
 #print axioms thresholdGraph_graphDissim
 #print axioms isDissimilarity_graphDissim
 #print axioms graphDissim_eq_zero_iff

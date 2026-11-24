@@ -31,6 +31,11 @@ so this reads "a partition into at most `k` clusters". -/
 def IsValidClustering [LE α] {k : ℕ} (d : X → X → α) (τ : α) (f : X → Fin k) : Prop :=
   ∀ y, ∃ c, f c = f y ∧ ∀ z, f z = f y → d c z ≤ τ
 
+/-- `f` is derived from the centres `S` as in the proof of Th. 3.1: distinct centres get distinct
+labels, and every other point gets the label of a nearest centre (ties broken arbitrarily). -/
+def IsDerivedFrom [LE α] {k : ℕ} (d : X → X → α) (S : Finset X) (f : X → Fin k) : Prop :=
+  Set.InjOn f S ∧ ∀ x ∉ S, ∃ c ∈ S, f x = f c ∧ ∀ c' ∈ S, d x c ≤ d x c'
+
 /-- Dissimilarity of Th. 3.1 (part 2): `0` on the diagonal, `1` on edges, `2` otherwise. -/
 def graphDissim {V : Type*} [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj]
     (u v : V) : ℕ :=
