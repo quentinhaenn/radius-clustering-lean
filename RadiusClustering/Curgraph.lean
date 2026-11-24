@@ -36,20 +36,18 @@ theorem isMinRadius_of_lastDominable
     IsMinRadius d k t := by
   sorry
 
-/-- **T4c** (Th. 3.4, constructive form). Same `t`. A partition derived from a minimum dominating
-set `S` of `G_t` has radius `≤ t` and `|S| ≤ k` clusters; splitting some of its clusters gives a
-partition into exactly `k` clusters of radius `≤ t`, which is then of minimum radius. -/
+/-- **T4c** (Th. 3.4, constructive form, as in Curgraph: `k = |S| = γ(G_t)`). Same `t`. The
+partition derived from a minimum dominating set `S` of `G_t` has radius `≤ t` and exactly `k`
+clusters, and `t` is the minimum radius for `k` clusters. -/
 theorem isDerivedFrom_lastDominable
-    (d : X → X → α) (hd : IsDissimilarity d) {k : ℕ} (hk : k ≤ Fintype.card X) (t : α)
+    (d : X → X → α) (hd : IsDissimilarity d) {k : ℕ} (t : α)
     (htT : ∃ x y, d x y = t)
     (hprev : ∀ x y, d x y < t →
       ¬ ∃ S : Finset X, S.card ≤ k ∧ IsDominating (thresholdGraph d (d x y)) S)
-    (S : Finset X) (hS : IsDominating (thresholdGraph d t) S) (hSk : S.card ≤ k)
+    (S : Finset X) (hS : IsDominating (thresholdGraph d t) S) (hSk : S.card = k)
     (hmin : ∀ S' : Finset X, IsDominating (thresholdGraph d t) S' → S.card ≤ S'.card)
     {m : ℕ} (f : X → Fin m) (hf : IsDerivedFrom d S f) :
-    IsValidClustering d t f ∧ (Finset.univ.image f).card ≤ k ∧
-      (∃ g : X → Fin k, Function.Surjective g ∧ IsValidClustering d t g ∧
-        (∀ x y, g x = g y → f x = f y)) ∧ IsMinRadius d k t := by
+    IsValidClustering d t f ∧ (Finset.univ.image f).card = k ∧ IsMinRadius d k t := by
   sorry
 
 /-- **Prop. 3.5.** For `X` non-empty, a single cluster of radius `≤ τ` exists iff some point is

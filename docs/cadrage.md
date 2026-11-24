@@ -46,8 +46,10 @@ symmetry, `d x x = 0`.
   as a singleton does not increase the radius. Edge cases: `k = 0`, `k > n`.
 - **T4 (corrected Th. 3.4, Prop. 3.5).** `t ↦ γ(G_t)` is antitone; for `1 ≤ k ≤ n`,
   `R*_k = min {t ∈ T | γ(G_t) ≤ k}` (T = values taken by d), and the "exactly k" optimum equals the
-  "at most k" optimum. The partition derived from an MDS may have fewer than k clusters: refine it
-  (T3b). Prop. 3.5: `R*_1 = min_y max_x d(y,x)`.
+  "at most k" optimum. Constructive form (T4c), as Curgraph uses it: `k` follows `γ`, so the
+  partition derived from a minimum dominating set `D` of `G_t` has `k = |D|` clusters and minimum
+  radius. Values of `k` that `γ` skips are not produced by Curgraph (decided at review, 2026-11-24);
+  T4 still gives `R*_k` for them. Prop. 3.5: `R*_1 = min_y max_x d(y,x)`.
   Example of Fig. 3.4, checkable by computation on `Fin 4`: R*_1 = 4, R*_2 = 1, R*_3 = 1 (for
   instance `{{x1,x3},{x2},{x4}}`), R*_4 = 0. The printed "P*_3" has 4 clusters: it is P*_4.
 - **T5 (optional, polynomial time).** DS ≤p CLUST and CLUST ≤p DS on binary encodings.
