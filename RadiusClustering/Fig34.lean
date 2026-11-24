@@ -20,10 +20,10 @@ def fig34 : Fin 4 → Fin 4 → ℕ :=
 theorem fig34_isDissimilarity : IsDissimilarity fig34 := by
   sorry
 
-/-- `R*_1 = 4`, `R*_2 = 1`, `R*_3 = 1`, `R*_4 = 0`. -/
+/-- The three partitions output by Curgraph: `R*_1 = 4`, `R*_2 = 1`, `R*_4 = 0` (indexed by the
+number of clusters). -/
 theorem fig34_minRadius :
-    IsMinRadius fig34 1 4 ∧ IsMinRadius fig34 2 1 ∧ IsMinRadius fig34 3 1 ∧
-      IsMinRadius fig34 4 0 := by
+    IsMinRadius fig34 1 4 ∧ IsMinRadius fig34 2 1 ∧ IsMinRadius fig34 4 0 := by
   sorry
 
 end RadiusClustering
