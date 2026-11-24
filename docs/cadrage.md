@@ -51,7 +51,8 @@ symmetry, `d x x = 0`.
   radius. Values of `k` that `γ` skips are not produced by Curgraph (decided at review, 2026-11-24);
   T4 still gives `R*_k` for them. Prop. 3.5: `R*_1 = min_y max_x d(y,x)`.
   Example of Fig. 3.4, checkable by computation on `Fin 4`: R*_1 = 4, R*_2 = 1, R*_3 = 1 (for
-  instance `{{x1,x3},{x2},{x4}}`), R*_4 = 0. The printed "P*_3" has 4 clusters: it is P*_4.
+  instance `{{x1,x3},{x2},{x4}}`), R*_4 = 0. In the figure, the index of `P*_i` is
+  the rank in Curgraph's output sequence, not the number of clusters (confirmed by the author).
 - **T5 (optional, polynomial time).** DS ≤p CLUST and CLUST ≤p DS on binary encodings.
 - **T6 (optional, conditional).** For every `α : ℕ → ℝ`, H_DS(α) ⇒ H_CLUST(α) (inapproximability),
   where the Dinur–Steurer hypothesis is an explicit `Prop` **argument**, never an `axiom`.

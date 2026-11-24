@@ -4,8 +4,8 @@ import Mathlib.Data.Fin.VecNotation
 /-!
 # Fig. 3.4: the 4-point example, checked
 
-Points `x1, x2, x3, x4` are `0, 1, 2, 3`. The figure's partition labelled `P*_3, t ∈ {0}` has 4
-clusters: it is `P*_4` (`docs/cadrage.md` §2).
+Points `x1, x2, x3, x4` are `0, 1, 2, 3`. In the figure, `P*_i` is the `i`-th partition output by
+Curgraph, not the number of clusters (`docs/cadrage.md` §2).
 -/
 
 namespace RadiusClustering
