@@ -1,7 +1,8 @@
 # Plan: Lean 4 formalisation of radius-constrained clustering ⇔ MDS
 
-Date: 2026-11-24. Status: J0–J3 done. Statements (T3a, T1, T1c, T2, T2c, T3b) validated line by
-line by the author (§7) and proved, no `sorry`, axioms limited to the standard three. Statements about other repositories
+Date: 2026-11-24. Status: J0–J4 done. Statements (T3a, T1, T1c, T2, T2c, T3b; T4a, T4, T4c,
+Prop. 3.5, Fig. 3.4, order invariance) validated line by line by the author and proved, no
+`sorry`, axioms limited to the standard three. Statements about other repositories
 come from automated reading of their files through the GitHub API and must be re-checked before
 being cited in any public document.
 
@@ -154,7 +155,14 @@ Modelling choices made at J1:
 - Proofs (J2–J3) confirm the remark made at review: no proof uses non-negativity of `d`. T3a (⇒)
   uses no property of `d`; T3a (⇐) uses only `d x x ≤ τ` and symmetry; T3b only `d x x ≤ τ`.
   These weaker versions are the unreviewed helper lemmas in `Pivot.lean` and `Exact.lean`.
-- T2 (i) and (ii) do not need `V` finite (`omit [Fintype V]`), which only generalises them.
+- T2 (i) and (ii) do not need `V` finite (`omit [Fintype V]`), which only generalises them; same
+  for T4a and Prop. 3.5 with `X`.
+- J4: non-negativity of `d` is used, in T4/T4c (a value `t` of `d` is a radius, so `t ≥ 0`) and in
+  the ℕ copy (`0` must be the smallest value so that `d' x x = 0`).
+- J4 names: `IsMinRadius` (Def. 3.1), `IsDominating.thresholdGraph_mono` (T4a),
+  `isMinRadius_of_lastDominable` (T4), `isDerivedFrom_lastDominable` (T4c),
+  `exists_validClustering_one_iff` (Prop. 3.5), `fig34`, `fig34_minRadius`,
+  `isValidClustering_comp_strictMono`, `thresholdGraph_comp_strictMono`, `exists_nat_copy`.
 - Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
 
 Tooling (J0): `scripts/check_axioms.sh` fails on any axiom other than `propext`,

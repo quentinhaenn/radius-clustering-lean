@@ -3,7 +3,7 @@
 Lean 4 / Mathlib formalisation of the equivalence between **radius-constrained clustering** and
 **minimum dominating set** (MDS), in both directions.
 
-**Status: J1–J3 proved.** `lake build` succeeds with no `sorry`; the key theorems depend only on
+**Status: J1–J4 proved.** `lake build` succeeds with no `sorry`; the key theorems depend only on
 `propext`, `Classical.choice` and `Quot.sound` (`STRICT=1 scripts/check_axioms.sh`, also run in
 CI). Plan and the list of statements: `docs/cadrage.md` §7.
 
