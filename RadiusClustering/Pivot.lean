@@ -32,7 +32,8 @@ theorem minClusters_iff_minDominating
 labels. -/
 theorem exists_isDerivedFrom
     {X α : Type*} [Fintype X] [LinearOrder α] [Zero α]
-    (d : X → X → α) (τ : α) (S : Finset X) (hS : IsDominating (thresholdGraph d τ) S) :
+    (d : X → X → α) (τ : α) (hd : IsDissimilarity d) (hτ : 0 ≤ τ)
+    (S : Finset X) (hS : IsDominating (thresholdGraph d τ) S) :
     ∃ f : X → Fin S.card, IsDerivedFrom d S f := by
   sorry
 
