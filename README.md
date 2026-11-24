@@ -26,11 +26,24 @@ own checker accepts it (`ACCEPTED (check): PEqualNP.Outside.L_clust_npc`, axioms
 `Quot.sound`, `Classical.choice`; output in `pequalnp-bridge/checker-output.txt`). The
 statement, and how to rerun the check: `docs/pequalnp.md`.
 
-## Source
+## Source and publications
 
-Quentin Haenn, *Partitionnement sous contrainte de similarité*, ISAE-ENSMA, 2025.
-HAL: [tel-05465598](https://theses.hal.science/tel-05465598) (NNT 2025ESMA0015).
-Software: [scikit-learn-contrib/radius_clustering](https://github.com/scikit-learn-contrib/radius_clustering).
+- Q. Haenn, *Partitionnement sous contrainte de similarité* (Clustering under similarity
+  constraints), PhD thesis, ISAE-ENSMA, 2025, in French. HAL:
+  [tel-05465598](https://theses.hal.science/tel-05465598) (NNT 2025ESMA0015).
+- Q. Haenn, B. Chardin, M. Baron, *Clustering Under Radius Constraints Using Minimum Dominating
+  Sets*, ISMIS 2024 (27th International Symposium on Methodologies for Intelligent Systems,
+  Poitiers), Lecture Notes in Computer Science 14670, Springer, pp. 14–23.
+  [doi:10.1007/978-3-031-62700-2_2](https://doi.org/10.1007/978-3-031-62700-2_2),
+  [hal-04533921](https://hal.science/hal-04533921).
+- Q. Haenn, B. Chardin, M. Baron, *Partitionnement sous contrainte de similarité*, BDA 2024 (40e
+  Conférence sur la Gestion de Données, Orléans), in French.
+  [hal-04791528](https://hal.science/hal-04791528).
+- Q. Haenn, B. Chardin, M. Baron, A. Hadjali, *Iterative Graph-Based Radius-Constrained
+  Clustering*, Machine Learning with Graphs Workshop, Porto, 2025.
+  [hal-05281748](https://hal.science/hal-05281748).
+- Software: [scikit-learn-contrib/radius_clustering](https://github.com/scikit-learn-contrib/radius_clustering)
+  ([hal-05039266](https://hal.science/hal-05039266)).
 
 The thesis is the reference for definitions and statements (Def. 1.11, Def. 3.1, Th. 3.1, Th. 3.3,
 Th. 3.4). This repository follows it and records, in the plan, the places where the Lean statement
