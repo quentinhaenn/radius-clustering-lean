@@ -5,6 +5,9 @@ import RadiusClustering.Exact
 import RadiusClustering.Curgraph
 import RadiusClustering.Fig34
 import RadiusClustering.OrderInvariance
+import RadiusClustering.PEqualNP.Clust
+import RadiusClustering.PEqualNP.Injective
+import RadiusClustering.PEqualNP.Fig34Test
 
 /-!
 # radius-clustering-lean

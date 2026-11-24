@@ -25,3 +25,8 @@ open RadiusClustering
 #print axioms isValidClustering_comp_strictMono
 #print axioms thresholdGraph_comp_strictMono
 #print axioms exists_nat_copy
+#print axioms RadiusClustering.PEqualNP.clustLang_eq_inline
+#print axioms RadiusClustering.PEqualNP.isDissimilarity_triDissim
+#print axioms RadiusClustering.PEqualNP.mem_clustLang_iff
+#print axioms RadiusClustering.PEqualNP.encInst_injective
+#print axioms RadiusClustering.PEqualNP.fig34_mem_clustLang
