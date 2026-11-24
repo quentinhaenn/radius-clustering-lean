@@ -14,9 +14,12 @@ def IsMinRadius (d : X → X → α) (k : ℕ) (r : α) : Prop :=
   (∃ f : X → Fin k, Function.Surjective f ∧ IsValidClustering d r f) ∧
     ∀ τ < r, ¬ ∃ f : X → Fin k, Function.Surjective f ∧ IsValidClustering d τ f
 
+-- `hd`, `ht` kept for uniformity with the reviewed statements (`docs/cadrage.md` §7).
+set_option linter.unusedVariables false in
 /-- **T4a.** A set dominating `G_t` still dominates `G_t'` for `t ≤ t'`: `t ↦ γ(G_t)` is
 antitone. -/
-theorem IsDominating.thresholdGraph_mono {d : X → X → α} {t t' : α} (htt' : t ≤ t')
+theorem IsDominating.thresholdGraph_mono {d : X → X → α} (hd : IsDissimilarity d)
+    {t t' : α} (ht : 0 ≤ t) (htt' : t ≤ t')
     {S : Finset X} (hS : IsDominating (thresholdGraph d t) S) :
     IsDominating (thresholdGraph d t') S := by
   sorry
