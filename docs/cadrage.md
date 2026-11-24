@@ -93,7 +93,10 @@ theorem (limited to `propext`, `Classical.choice`, `Quot.sound`).
 - **J3.** T3b and edge cases.
 - **J4.** T4, Fig. 3.4 by computation, and the order-invariance lemma (ℝ → ℕ).
 - **J5.** "Gap" versions: one theorem, everything inline, Mathlib only, accepted by the local
-  pequalnp checker.
+  pequalnp checker. **Reoriented (2026-11-24):** one candidate statement, `NPComplete CLUST` in
+  pequalnp's framework (`docs/pequalnp.md`). Done: the language, its bridge to `IsDissimilarity`
+  and `IsValidClustering`, unique reading, Fig. 3.4 test, SAT → MDS gadget, SAT → CLUST
+  correctness. Remaining: variable renaming, polynomial time of SAT → CLUST, CLUST ∈ NP.
 - **Gate before J6.** Choice of complexity formalism: (a) pequalnp's, (b) cslib-frontier's,
   (c) Mathlib alone. Recommendation: (a), since the goal is pequalnp.
 - **J6 (optional).** T5 with Turing machines: very uncertain cost.
