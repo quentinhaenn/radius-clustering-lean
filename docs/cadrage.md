@@ -145,7 +145,8 @@ Modelling choices made at J1:
   are not part of the reviewed surface. (Decided at review, replacing "minimal hypotheses".)
 - `graphDissim` is ℕ-valued (the pequalnp target); a real-valued copy is a cast. Only its
   dissimilarity property is stated: metric properties (triangle inequality, separation) were dropped
-  at review, the thesis being about dissimilarities without the triangle inequality.
+  at review, the thesis being about dissimilarities without the triangle inequality. Possible
+  optional corollary later: hardness already holds for metric instances.
 - Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
 
 Tooling (J0): `scripts/check_axioms.sh` fails on any axiom other than `propext`,
