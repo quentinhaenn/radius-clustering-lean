@@ -50,9 +50,12 @@ theorem isDerivedFrom_lastDominable
     IsValidClustering d t f ∧ (Finset.univ.image f).card = k ∧ IsMinRadius d k t := by
   sorry
 
+-- `hd`, `hτ` kept for uniformity with the reviewed statements (`docs/cadrage.md` §7).
+set_option linter.unusedVariables false in
 /-- **Prop. 3.5.** For `X` non-empty, a single cluster of radius `≤ τ` exists iff some point is
 at dissimilarity `≤ τ` from every point: `R*_1 = min_y max_x d(y, x)`. -/
-theorem exists_validClustering_one_iff [Nonempty X] (d : X → X → α) (τ : α) :
+theorem exists_validClustering_one_iff [Nonempty X] (d : X → X → α) (hd : IsDissimilarity d)
+    (τ : α) (hτ : 0 ≤ τ) :
     (∃ f : X → Fin 1, IsValidClustering d τ f) ↔ ∃ y, ∀ x, d y x ≤ τ := by
   sorry
 
