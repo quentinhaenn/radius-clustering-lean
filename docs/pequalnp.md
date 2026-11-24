@@ -107,6 +107,13 @@ These files import pequalnp's modules, so they are built inside a clone of
   **`PEqualNP.Outside.L_clust_npc`**, the candidate statement above, proved.
 
 All of them depend on `propext`, `Classical.choice`, `Quot.sound` only (`CheckAxioms.lean`).
-The theorem is proved against pequalnp's definitions; it has not been run through their checker
-(`tools/check-lean.mjs`), and their submission format (one file, imports limited to the modules a
-posted gap lists) would require inlining these files.
+### Submission file and official checker
+
+`scripts/bundle_pequalnp.py` writes `pequalnp-bridge/L_clust_npc.lean`: the 21 modules in one file
+in their format (helpers inside `namespace PEqualNP.Outside.L_clust_npc`, the theorem after it,
+imports Mathlib and `PEqualNP.Library` only). Copied to `lean/PEqualNP/Outside/` of the clone
+(`58845ea`, committed `lakefile.toml`), their checker `node tools/check-lean.mjs <file>
+<statement> check` gives `ACCEPTED (check): PEqualNP.Outside.L_clust_npc; axioms [propext,
+Quot.sound, Classical.choice]`, kernel re-check of 5606 constants (2026-11-24, full output with
+MANIFEST in `pequalnp-bridge/checker-output.txt`). Not checked: their rule that a file imports
+only the modules listed for a posted gap, since no gap exists for this statement.
