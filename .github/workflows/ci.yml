@@ -12,4 +12,4 @@ jobs:
       # Installs elan, fetches the Mathlib cache, runs `lake build`.
       - uses: leanprover/lean-action@v1
       - name: Check axioms
-        run: scripts/check_axioms.sh
+        run: STRICT=1 scripts/check_axioms.sh

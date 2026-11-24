@@ -1,7 +1,7 @@
 # Plan: Lean 4 formalisation of radius-constrained clustering ⇔ MDS
 
-Date: 2026-11-24. Status: J0 done; J1 done: definitions and statements (T3a, T1, T1c, T2, T2c,
-T3b) written with `sorry` and validated line by line by the author (§7). No proof yet. Statements about other repositories
+Date: 2026-11-24. Status: J0–J3 done. Statements (T3a, T1, T1c, T2, T2c, T3b) validated line by
+line by the author (§7) and proved, no `sorry`, axioms limited to the standard three. Statements about other repositories
 come from automated reading of their files through the GitHub API and must be re-checked before
 being cited in any public document.
 
@@ -148,11 +148,14 @@ Modelling choices made at J1:
   dissimilarity property is stated: metric properties (triangle inequality, separation) were dropped
   at review, the thesis being about dissimilarities without the triangle inequality. Possible
   optional corollary later: hardness already holds for metric instances.
+- Proofs (J2–J3) confirm the remark made at review: no proof uses non-negativity of `d`. T3a (⇒)
+  uses no property of `d`; T3a (⇐) uses only `d x x ≤ τ` and symmetry; T3b only `d x x ≤ τ`.
+  These weaker versions are the unreviewed helper lemmas in `Pivot.lean` and `Exact.lean`.
+- T2 (i) and (ii) do not need `V` finite (`omit [Fintype V]`), which only generalises them.
 - Files are not Lean `module`s (the build warns about it); revisit at J5 if pequalnp requires it.
 
 Tooling (J0): `scripts/check_axioms.sh` fails on any axiom other than `propext`,
-`Classical.choice`, `Quot.sound`; `sorryAx` is only a warning until `STRICT=1`, which CI will set
-once the J1–J3 proofs are done. The local copy of the pequalnp checker is deferred to J5.
+`Classical.choice`, `Quot.sound`; with `STRICT=1` (set in CI since J3) it also fails on `sorryAx`. The local copy of the pequalnp checker is deferred to J5.
 
 ## 8. First session
 
